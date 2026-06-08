@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muthu Hemanthkumar — Procurement Operations Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1628;
+    --navy-mid: #162240;
+    --navy-light: #1E3A5F;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5EDD4;
+    --cream: #F9F6EF;
+    --text-dark: #0D1117;
+    --text-mid: #3A4A5C;
+    --text-muted: #6B7A8D;
+    --white: #FFFFFF;
+    --border: rgba(201,168,76,0.25);
+    --border-light: rgba(201,168,76,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(11,22,40,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 8% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -100px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 32px; height: 1px;
+    background: var(--gold);
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name span { color: var(--gold); }
+  .hero-title {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    margin-bottom: 2rem;
+  }
+  .hero-summary {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.75rem 2rem;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    padding: 0.75rem 2rem;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  /* hero right panel */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding-left: 6%;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem 1.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .stat-card:hover::before { transform: scaleX(1); }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 96px 8%; }
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-eyebrow::before {
+    content: ''; display: block; width: 24px; height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+  .section-title em { color: var(--gold); font-style: normal; }
+
+  /* ─── COMPETENCIES ─── */
+  .competencies-bg { background: var(--white); }
+  .competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .comp-card {
+    background: var(--cream);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .comp-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .comp-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .comp-text h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .comp-text p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ─── EXPERIENCE ─── */
+  .experience-bg { background: var(--cream); }
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 20px; top: 8px; bottom: 8px; width: 1px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+  .exp-entry {
+    padding-left: 60px;
+    margin-bottom: 3rem;
+    position: relative;
+    animation: fadeUp 0.5s ease both;
+  }
+  .exp-dot {
+    position: absolute; left: 12px; top: 6px;
+    width: 17px; height: 17px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 2px solid var(--gold);
+  }
+  .exp-meta {
+    display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .exp-company {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .exp-date {
+    font-size: 0.75rem; color: var(--text-muted);
+    background: rgba(201,168,76,0.1);
+    padding: 2px 10px; border-radius: 20px;
+  }
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 1rem;
+  }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.9rem; color: var(--text-mid); line-height: 1.7;
+    padding: 0.35rem 0 0.35rem 1.25rem;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .exp-bullets li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--gold); font-size: 0.8rem;
+  }
+  .highlight-badge {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-bg { background: var(--navy); }
+  .skills-bg .section-title { color: var(--white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-group {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  .skill-group-title {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 4px 10px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .skill-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── EDUCATION ─── */
+  .education-bg { background: var(--white); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .edu-card {
+    background: var(--cream);
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .edu-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+  }
+  .edu-badge {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold-light);
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 3px;
+    margin-bottom: 1rem;
+  }
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .edu-school { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .edu-dates { font-size: 0.78rem; color: var(--gold); font-weight: 500; }
+  .edu-honor {
+    margin-top: 0.75rem;
+    font-size: 0.8rem; color: var(--text-mid);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .edu-honor::before { content: '★'; color: var(--gold); font-size: 0.7rem; }
+
+  /* ─── PROJECTS ─── */
+  .projects-bg { background: var(--cream); }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .project-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: border-color 0.2s, transform 0.15s;
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--gold);
+  }
+  .project-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .project-tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .project-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .tech-pill {
+    font-size: 0.72rem; font-weight: 500;
+    background: var(--navy); color: var(--gold-light);
+    padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* ─── ACHIEVEMENTS ─── */
+  .achievements-bg { background: var(--navy); }
+  .achievements-bg .section-title { color: var(--white); }
+  .ach-list { display: flex; flex-direction: column; gap: 1rem; max-width: 800px; }
+  .ach-item {
+    display: flex; align-items: flex-start; gap: 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .ach-item:hover { border-color: var(--gold); }
+  .ach-icon {
+    font-size: 1.5rem; line-height: 1;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .ach-text h4 { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
+  .ach-text p { font-size: 0.84rem; color: rgba(255,255,255,0.5); }
+
+  /* ─── CONTACT ─── */
+  .contact-bg { background: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  .contact-intro {
+    font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 2rem;
+  }
+  .contact-detail {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .contact-detail-icon {
+    width: 40px; height: 40px;
+    background: var(--navy); color: var(--gold);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-detail-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .contact-detail-value { font-size: 0.9rem; font-weight: 500; color: var(--navy); }
+  .contact-detail-value a { color: var(--navy); text-decoration: none; }
+  .contact-detail-value a:hover { color: var(--gold); }
+
+  .availability-banner {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    border: 1px solid var(--border);
+  }
+  .avail-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #4CAF50; flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(76,175,80,0.2);
+  }
+  .avail-text { font-size: 0.88rem; color: rgba(255,255,255,0.8); }
+  .avail-text strong { color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid var(--border);
+    padding: 2rem 8%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1rem; }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .hero-content { animation: fadeUp 0.7s ease both; }
+  .hero-stats { animation: fadeUp 0.7s 0.15s ease both; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 0 5%; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.75rem; }
+    .hero { grid-template-columns: 1fr; padding: 100px 6% 60px; }
+    .hero-stats { padding-left: 0; margin-top: 3rem; }
+    section { padding: 64px 6%; }
+    .edu-grid, .projects-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MH</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Procurement Operations Analyst</div>
+    <h1 class="hero-name">Muthu<br><span>Hemanthkumar</span></h1>
+    <p class="hero-title">Purchase Orders · Invoice Resolution · Data Integrity</p>
+    <p class="hero-summary">
+      Detail-oriented operations professional with a track record of 97–98% data accuracy across 200–500+ daily entries. Skilled in procurement documentation, compliance audits, and process optimisation within complex, regulated environments.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#experience" class="btn-outline">View Experience</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-number">98%</div>
+      <div class="stat-label">Data Accuracy Rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Daily Entries Processed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">20%</div>
+      <div class="stat-label">Resolution Speed Gain</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3rd</div>
+      <div class="stat-label">ISRO National Tech Quiz</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
+<section class="competencies-bg" id="competencies">
+  <div class="section-eyebrow">Core Competencies</div>
+  <h2 class="section-title">What I <em>Bring</em> to the Table</h2>
+  <div class="competencies-grid">
+    <div class="comp-card">
+      <div class="comp-icon">PO</div>
+      <div class="comp-text">
+        <h4>Purchase Order Management</h4>
+        <p>End-to-end PO creation, validation, and documentation aligned to procurement compliance standards.</p>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">⚡</div>
+      <div class="comp-text">
+        <h4>Invoice & Discrepancy Resolution</h4>
+        <p>Systematic identification and resolution of invoice mismatches with structured escalation processes.</p>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">✓</div>
+      <div class="comp-text">
+        <h4>Audit Compliance</h4>
+        <p>100% internal compliance benchmarks maintained through rigorous documentation and audit trails.</p>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">📊</div>
+      <div class="comp-text">
+        <h4>Data Accuracy & Quality</h4>
+        <p>Achieved 97–98% accuracy across 200–500+ daily transaction entries in high-volume environments.</p>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">🔗</div>
+      <div class="comp-text">
+        <h4>Stakeholder Collaboration</h4>
+        <p>Cross-functional coordination with operations, engineering, and vendor teams to resolve issues and streamline workflows.</p>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">⚙</div>
+      <div class="comp-text">
+        <h4>Process Improvement</h4>
+        <p>Delivered 10% energy efficiency gains and 20% faster resolution through optimised workflows and Lean principles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-bg" id="experience">
+  <div class="section-eyebrow">Professional Experience</div>
+  <h2 class="section-title">Career <em>Journey</em></h2>
+  <div class="timeline">
+
+    <div class="exp-entry">
+      <div class="exp-dot"></div>
+      <div class="exp-meta">
+        <span class="exp-company">Balaji Dairy, Tirupati</span>
+        <span class="exp-date">Aug 2024 – Feb 2025</span>
+      </div>
+      <div class="exp-role">Technical Assistant Intern — Operations & Compliance</div>
+      <ul class="exp-bullets">
+        <li>Processed and verified 200+ transaction log entries daily with <strong>97% accuracy</strong>, directly supporting procurement documentation and operational compliance benchmarks. <span class="highlight-badge">KPI</span></li>
+        <li>Operated LT control panels and conducted systematic audits of transaction records, ensuring <strong>100% compliance</strong> with internal operational standards — mirroring PO validation requirements.</li>
+        <li>Identified monitoring inefficiencies and implemented optimised workflows, achieving a <strong>10% improvement</strong> in energy efficiency, demonstrating Lean continuous improvement mindset. <span class="highlight-badge">Impact</span></li>
+        <li>Conducted preventive maintenance scheduling and escalated technical issues to senior personnel, improving resolution turnaround and cross-team coordination.</li>
+        <li>Collaborated with operations teams to validate data integrity and ensure reporting accuracy, building stakeholder trust through consistent service delivery.</li>
+      </ul>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-dot"></div>
+      <div class="exp-meta">
+        <span class="exp-company">33/11kV Indoor Substation, Tirupati</span>
+        <span class="exp-date">Jun 2022 – Feb 2023</span>
+      </div>
+      <div class="exp-role">Apprentice Trainee — Operations & Data Management</div>
+      <ul class="exp-bullets">
+        <li>Monitored and transcribed 500+ equipment readings weekly, maintaining a <strong>98% data accuracy rate</strong> and supporting audit compliance reporting — directly transferable to PO and invoice management. <span class="highlight-badge">KPI</span></li>
+        <li>Assisted senior engineers in diagnosing and resolving operational discrepancies, reducing system downtime by <strong>15%</strong> through structured preventive maintenance. <span class="highlight-badge">Impact</span></li>
+        <li>Escalated non-routine issues through appropriate channels, improving resolution speed by <strong>20%</strong> and reinforcing a culture of compliance and structured problem-solving.</li>
+        <li>Ensured <strong>99% equipment reliability</strong> across power distribution systems by following strict operational procedures and documentation standards.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-bg" id="skills">
+  <div class="section-eyebrow">Technical Skills</div>
+  <h2 class="section-title">Tools & <em>Technologies</em></h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Procurement Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">SAP (Familiar)</span>
+        <span class="skill-tag">Microsoft Excel</span>
+        <span class="skill-tag">Log Trackers</span>
+        <span class="skill-tag">Ticket Systems</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Data & Automation</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">AI Process Optimisation</span>
+        <span class="skill-tag">Data Validation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Operations</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Transaction Management</span>
+        <span class="skill-tag">S&OP</span>
+        <span class="skill-tag">Quality Benchmarking</span>
+        <span class="skill-tag">Audit Compliance</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Soft Skills & Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Issue Escalation</span>
+        <span class="skill-tag">Strategic Thinking</span>
+        <span class="skill-tag">English (Professional)</span>
+        <span class="skill-tag">Telugu (Native)</span>
+        <span class="skill-tag">Tamil</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education-bg" id="education">
+  <div class="section-eyebrow">Education</div>
+  <h2 class="section-title">Academic <em>Foundation</em></h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <span class="edu-badge">Current · Expected 2026</span>
+      <div class="edu-degree">B.Tech — Electrical Engineering</div>
+      <div class="edu-school">Sri Venkateswara College of Engineering, Tirupati</div>
+      <div class="edu-dates">Aug 2023 – Jun 2026</div>
+      <div class="edu-honor">Expected First Class Distinction</div>
+      <div class="edu-honor" style="margin-top:0.35rem;">Coursework: Automation, Data Systems, Operations Management</div>
+    </div>
+    <div class="edu-card">
+      <span class="edu-badge">Graduated · First Class Distinction</span>
+      <div class="edu-degree">Diploma — Electrical Engineering</div>
+      <div class="edu-school">Sree Vidyanikethan Engineering College, Tirupati</div>
+      <div class="edu-dates">Aug 2020 – Jun 2023</div>
+      <div class="edu-honor">Graduated with First Class Distinction</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-bg" id="projects">
+  <div class="section-eyebrow">Projects</div>
+  <h2 class="section-title">Work That <em>Demonstrates</em> Capability</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-tag">Academic Project · Jan–Apr 2023</div>
+      <div class="project-title">Sensor-Based Automatic Traffic Controller</div>
+      <p class="project-desc">
+        Processed real-time sensor data using C and Python, performing iterative audits to resolve exceptions and improve output accuracy — directly demonstrating proficiency in automation and process optimisation applicable to procurement systems.
+      </p>
+      <div class="project-tech">
+        <span class="tech-pill">Python</span>
+        <span class="tech-pill">C</span>
+        <span class="tech-pill">Automation</span>
+        <span class="tech-pill">Data Auditing</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-tag">Academic Project · Jan–Apr 2023</div>
+      <div class="project-title">Bidirectional DC-DC Converter for EV Charging</div>
+      <p class="project-desc">
+        Simulated and tested converter performance using MATLAB/Simulink, documenting results with structured methodology — showcasing ability to track, validate, and report data against defined benchmarks.
+      </p>
+      <div class="project-tech">
+        <span class="tech-pill">MATLAB</span>
+        <span class="tech-pill">Simulink</span>
+        <span class="tech-pill">Data Reporting</span>
+        <span class="tech-pill">Benchmarking</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievements-bg" id="achievements">
+  <div class="section-eyebrow">Achievements</div>
+  <h2 class="section-title">Recognition & <em>Distinctions</em></h2>
+  <div class="ach-list">
+    <div class="ach-item">
+      <div class="ach-icon">🎓</div>
+      <div class="ach-text">
+        <h4>First Class Distinction — B.Tech & Diploma in Electrical Engineering</h4>
+        <p>Consistent academic excellence across both programmes, demonstrating dedication and rigour.</p>
+      </div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-icon">🏆</div>
+      <div class="ach-text">
+        <h4>3rd Place — ISRO National Technical Quiz</h4>
+        <p>Ranked nationally at ISRO's competitive technical quiz, demonstrating strong analytical ability and technical knowledge under pressure.</p>
+      </div>
+    </div>
+    <div class="ach-item">
+      <div class="ach-icon">📈</div>
+      <div class="ach-text">
+        <h4>97–98% Data Accuracy in High-Volume Environments</h4>
+        <p>Maintained benchmark-level accuracy processing 200–500+ entries daily across two operational roles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="section-eyebrow">Contact</div>
+  <h2 class="section-title">Let's <em>Connect</em></h2>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">
+        I'm actively seeking high-profile opportunities in procurement operations, supply chain management, and operational excellence — particularly in regulated, complex manufacturing environments such as aerospace, defence, and energy.
+      </p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">✉</div>
+        <div>
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-value"><a href="mailto:muthuhemanth011@gmail.com">muthuhemanth011@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">☎</div>
+        <div>
+          <div class="contact-detail-label">Phone</div>
+          <div class="contact-detail-value"><a href="tel:+919951993133">+91 9951993133</a></div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div>
+          <div class="contact-detail-label">Location</div>
+          <div class="contact-detail-value">Tirupati, Andhra Pradesh, India</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">in</div>
+        <div>
+          <div class="contact-detail-label">LinkedIn</div>
+          <div class="contact-detail-value"><a href="https://linkedin.com/in/muthu-hemanthkumar-0a541b373" target="_blank">linkedin.com/in/muthu-hemanthkumar-0a541b373</a></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="availability-banner">
+        <div class="avail-dot"></div>
+        <div class="avail-text">
+          <strong>Open to Opportunities</strong> — Available for full-time roles in procurement operations, supply chain, and operational excellence. Immediate availability.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Muthu Hemanthkumar</div>
+  <div class="footer-copy">Procurement Operations Analyst · Tirupati, India · 2025</div>
+</footer>
+
+</body>
+</html>
